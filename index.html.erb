@@ -5,8 +5,8 @@
   </head>
   <body>
     <h1>This is the generator for <%= name %> Ipsum!</h1>
-    <% lipsum_number.times do |num| %>
-      <%= content * num %>
+    <% lipsum_number.times do |* num| %>
+      <p><%= content %></p>
     <% end %>
   </body>
 </html>
