@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%= name %></title>
   </head>
   <body>
     <h1>This is the generator for <%= name %> Ipsum!</h1>
-    <p><%= content %></p>
+    <% lipsum_number.times do |num| %>
+      <%= content * num %>
+    <% end %>
   </body>
 </html>
