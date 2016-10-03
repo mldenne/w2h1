@@ -2,8 +2,8 @@
 
 require 'erb'
 
-lipsum_wanted = ARGV[0]
-lipsum_number = ARGV[1] || 1
+# lipsum_wanted = ARGV[0]
+# lipsum_number = ARGV[1] || 1
 
 # prompt user for ipsum - used numbers because it takes less typing (laziness is good)
 
@@ -17,19 +17,6 @@ print ">> "
 
 lipsum_wanted = gets.chomp
 lipsum_wanted = lipsum_wanted.to_i
-
-# prompt user select a number of paragraphs to print
-
-puts %{
-  How many paragraphs would you like?
-}
-print ">> "
-
-lipsum_number = gets.chomp
-if lipsum_number == 0 || nil
-  lipsum_number == 1
-end
-lipsum_number = lipsum_number.to_i
 
 # ipsums for creating html file
 
@@ -47,7 +34,22 @@ elsif lipsum_wanted == 3
   content = "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass."
 else
   puts "You have entered an invalid selection."
+  exit
 end
+
+# prompt user select a number of paragraphs to print
+
+puts %{
+  How many paragraphs would you like?
+}
+print ">> "
+
+lipsum_number = gets.chomp
+if lipsum_number == 0 || nil
+  lipsum_number == 1
+end
+lipsum_number = lipsum_number.to_i
+
 new_file = File.open("./#{html_title}.html", "w+")
 new_file << ERB.new(File.read("index.html.erb")).result(binding)
 new_file.close
